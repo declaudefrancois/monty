@@ -28,7 +28,7 @@ int _read_line(char *buff, int fd, size_t len, off_t *offset)
 	if (rCount <= 0)
 		return (-1);
 
-	while (i < rCount && *(buff + 1) != '\n')
+	while (i < rCount && *(buff + i) != '\n')
 		i++;
 
 	/* End the buffers at the end of the line => read line :) */
