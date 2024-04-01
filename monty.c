@@ -11,7 +11,7 @@ void process(char *filepath)
 	fd = open(filepath, O_RDONLY);
 	if (!fd)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filepath);
+		fprintf(stderr, "Error: Can't open file <%s>\n", filepath);
 		exit(EXIT_FAILURE);
 	}
 
@@ -79,12 +79,12 @@ int handle_operator(
 	char *args
 )
 {
-	/**
-	 * printf("[%d]: Hanlde operator <%s> with args <%s>\n",
-	 * line_number, operator, args);
-	 */
 	if (strcmp(operator, "push") == 0)
 		return (handle_push(tail, line_number, args));
+	else if (strcmp(operator, "pint") == 0)
+		return (handle_pint(tail, line_number));
+        else if (strcmp(operator, "pop") == 0)
+                return (handle_pop(tail, line_number));
 
 	pall(*tail);
 	return (1);
@@ -101,12 +101,12 @@ int handle_operator(
 char is_monty_operator(char *op)
 {
 	int i;
-	const char *OPERATORS[2] = {
-		"push",
-		"pall"
+	const char *OPERATORS[4] = {
+		"push", "pint",
+		"pall", "pop",
 	};
 
-	for (i = 0; i <= 1; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (strcmp(OPERATORS[i], op) == 0)
 			return (1);

@@ -140,4 +140,24 @@ void free_resources(stack_t **top, int fd, char *line);
  */
 char *get_next_line(int fd);
 
+
+/**
+ * handle_pint - Handles the pint operator.
+ * @line_number: The line number.
+ * @top:  A double pointer to the top of the stack.
+ *
+ * Return: 1 on success or -1 on failure.
+ */
+int handle_pint(stack_t **tail, int line_number);
+
+
+/**
+ * handle_pop - Handles the pop operator.
+ * @line_number: The line number.
+ * @top:  A double pointer to the top of the stack.
+ *
+ * Return: 1 on success or -1 on failure.
+ */
+int handle_pop(stack_t **top, int line_number);
+
 #endif /** MONTY_H */
